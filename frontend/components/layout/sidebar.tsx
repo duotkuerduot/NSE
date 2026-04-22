@@ -1,6 +1,5 @@
 "use client";
 
-import type { Route } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BarChart3, BriefcaseBusiness, LayoutDashboard, Menu } from "lucide-react";
@@ -11,12 +10,12 @@ import { cn } from "@/utils/cn";
 const navItems = [
   {
     label: "Dashboard",
-    href: "/dashboard" as Route,
+    href: "/dashboard",
     icon: LayoutDashboard,
   },
   {
     label: "Portfolio",
-    href: "/portfolio" as Route,
+    href: "/portfolio",
     icon: BriefcaseBusiness,
   },
 ];

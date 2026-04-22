@@ -1,6 +1,5 @@
 "use client";
 
-import type { Route } from "next";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { startTransition, useDeferredValue } from "react";
@@ -95,7 +94,7 @@ export default function DashboardPage() {
 
   function openTicker(ticker: string) {
     toggleSelectedStock(ticker);
-    router.push(`/stocks/${ticker}` as Route);
+    router.push(`/stocks/${ticker}`);
   }
 
   if (signalsQuery.isLoading) {

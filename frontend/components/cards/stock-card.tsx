@@ -1,4 +1,3 @@
-import type { Route } from "next";
 import Link from "next/link";
 import { ArrowUpRight, BadgePercent, ShieldAlert } from "lucide-react";
 
@@ -16,7 +15,7 @@ interface StockCardProps {
 
 export function StockCard({ stock, className }: StockCardProps) {
   return (
-    <Link href={`/stocks/${stock.ticker}` as Route} className="group block">
+    <Link href={`/stocks/${stock.ticker}`} className="group block">
       <Card
         className={cn(
           "h-full border-white/10 bg-gradient-to-br from-slate-950/95 via-slate-900/90 to-slate-950/80 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-glow",
