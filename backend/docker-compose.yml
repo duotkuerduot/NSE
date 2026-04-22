@@ -1,0 +1,39 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env.example
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/nse_intelligence
+      REDIS_URL: redis://redis:6379/0
+      RAW_DATA_DIR: /app/external_data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - "../NSE 2007-2025 Data:/app/external_data:ro"
+      - "./artifacts:/app/artifacts"
+      - "./data:/app/data"
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: nse_intelligence
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
